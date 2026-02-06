@@ -12,6 +12,9 @@ import InterviewsPage from "./pages/InterviewsPage";
 import TeamPage from "./pages/TeamPage";
 import WorkflowPage from "./pages/WorkflowPage";
 import SettingsPage from "./pages/SettingsPage";
+import IntegrationsPage from "./pages/IntegrationsPage";
+import UsagePage from "./pages/UsagePage";
+import BillingPage from "./pages/BillingPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -31,6 +34,9 @@ const App = () => (
             <Route path="/interviews" element={<InterviewsPage />} />
             <Route path="/team" element={<TeamPage />} />
             <Route path="/workflow" element={<WorkflowPage />} />
+            <Route path="/integrations" element={<IntegrationsPage />} />
+            <Route path="/usage" element={<UsagePage />} />
+            <Route path="/billing" element={<BillingPage />} />
             <Route path="/settings" element={<SettingsPage />} />
           </Route>
           <Route path="*" element={<NotFound />} />
