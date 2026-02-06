@@ -3,7 +3,15 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Index from "./pages/Index";
+import { DashboardLayout } from "@/components/DashboardLayout";
+import OverviewPage from "./pages/OverviewPage";
+import JobsPage from "./pages/JobsPage";
+import CandidatesPage from "./pages/CandidatesPage";
+import CandidateProfilePage from "./pages/CandidateProfilePage";
+import InterviewsPage from "./pages/InterviewsPage";
+import TeamPage from "./pages/TeamPage";
+import WorkflowPage from "./pages/WorkflowPage";
+import SettingsPage from "./pages/SettingsPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -15,8 +23,16 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Index />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route element={<DashboardLayout />}>
+            <Route path="/" element={<OverviewPage />} />
+            <Route path="/jobs" element={<JobsPage />} />
+            <Route path="/candidates" element={<CandidatesPage />} />
+            <Route path="/candidates/:id" element={<CandidateProfilePage />} />
+            <Route path="/interviews" element={<InterviewsPage />} />
+            <Route path="/team" element={<TeamPage />} />
+            <Route path="/workflow" element={<WorkflowPage />} />
+            <Route path="/settings" element={<SettingsPage />} />
+          </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
