@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-
 const LoginPage = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -11,12 +10,10 @@ const LoginPage = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [shake, setShake] = useState(false);
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
     setLoading(true);
-
     setTimeout(() => {
       if (!email || !password) {
         setError("Invalid credentials. Please try again.");
@@ -28,9 +25,7 @@ const LoginPage = () => {
       navigate("/");
     }, 1200);
   };
-
-  return (
-    <div className="min-h-screen flex bg-sidebar">
+  return <div className="min-h-screen flex bg-sidebar">
       {/* Left — System Presence */}
       <div className="hidden lg:flex flex-col justify-between flex-1 p-12 relative overflow-hidden">
         {/* Animated grid background */}
@@ -92,113 +87,48 @@ const LoginPage = () => {
 
           <form onSubmit={handleSubmit} className="space-y-5">
             <div className="space-y-1.5">
-              <Label
-                htmlFor="email"
-                className="text-xs font-medium uppercase tracking-wider text-muted-foreground"
-              >
+              <Label htmlFor="email" className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
                 Work Email
               </Label>
-              <Input
-                id="email"
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="you@company.com"
-                className={`h-11 bg-background transition-colors duration-200 ${
-                  shake ? "animate-shake" : ""
-                }`}
-                autoComplete="email"
-                autoFocus
-              />
+              <Input id="email" type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="you@company.com" className={`h-11 bg-background transition-colors duration-200 ${shake ? "animate-shake" : ""}`} autoComplete="email" autoFocus />
             </div>
 
             <div className="space-y-1.5">
-              <Label
-                htmlFor="password"
-                className="text-xs font-medium uppercase tracking-wider text-muted-foreground"
-              >
+              <Label htmlFor="password" className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
                 Password
               </Label>
-              <Input
-                id="password"
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="••••••••"
-                className={`h-11 bg-background transition-colors duration-200 ${
-                  shake ? "animate-shake" : ""
-                }`}
-                autoComplete="current-password"
-              />
+              <Input id="password" type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="••••••••" className={`h-11 bg-background transition-colors duration-200 ${shake ? "animate-shake" : ""}`} autoComplete="current-password" />
             </div>
 
-            {error && (
-              <p className="text-sm text-destructive animate-fade-in">
+            {error && <p className="text-sm text-destructive animate-fade-in">
                 {error}
-              </p>
-            )}
+              </p>}
 
             <div className="pt-1">
-              <p className="text-xs text-muted-foreground mb-4">
-                You are accessing:{" "}
-                <span className="text-foreground font-medium">
-                  acme.hireflow.io
-                </span>
-              </p>
+              
 
-              <Button
-                type="submit"
-                disabled={loading}
-                className="w-full h-11 text-sm font-medium transition-transform duration-150 active:scale-[0.98]"
-              >
-                {loading ? (
-                  <span className="flex items-center gap-2">
-                    <svg
-                      className="animate-spin h-4 w-4"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                    >
-                      <circle
-                        className="opacity-25"
-                        cx="12"
-                        cy="12"
-                        r="10"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                      />
-                      <path
-                        className="opacity-75"
-                        fill="currentColor"
-                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
-                      />
+              <Button type="submit" disabled={loading} className="w-full h-11 text-sm font-medium transition-transform duration-150 active:scale-[0.98]">
+                {loading ? <span className="flex items-center gap-2">
+                    <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24" fill="none">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" />
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
                     </svg>
                     Signing in
-                  </span>
-                ) : (
-                  "Continue"
-                )}
+                  </span> : "Continue"}
               </Button>
             </div>
           </form>
 
           <div className="mt-6 flex items-center justify-between">
-            <button
-              type="button"
-              className="text-xs text-muted-foreground hover:text-foreground transition-colors duration-200"
-            >
+            <button type="button" className="text-xs text-muted-foreground hover:text-foreground transition-colors duration-200">
               Forgot password
             </button>
-            <button
-              type="button"
-              className="text-xs text-muted-foreground hover:text-foreground transition-colors duration-200"
-            >
+            <button type="button" className="text-xs text-muted-foreground hover:text-foreground transition-colors duration-200">
               Contact administrator
             </button>
           </div>
         </div>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default LoginPage;
