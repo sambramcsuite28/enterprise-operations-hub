@@ -15,6 +15,7 @@ import SettingsPage from "./pages/SettingsPage";
 import IntegrationsPage from "./pages/IntegrationsPage";
 import UsagePage from "./pages/UsagePage";
 import BillingPage from "./pages/BillingPage";
+import LoginPage from "./pages/LoginPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -26,6 +27,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
+          <Route path="/login" element={<LoginPage />} />
           <Route element={<DashboardLayout />}>
             <Route path="/" element={<OverviewPage />} />
             <Route path="/jobs" element={<JobsPage />} />
